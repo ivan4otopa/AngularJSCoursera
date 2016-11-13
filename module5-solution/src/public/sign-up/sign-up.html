@@ -1,0 +1,61 @@
+<div class="container">
+  <form class="sign-up" name="signUpForm" novalidate>
+    <label for="first-name">First Name</label>
+    <br />
+    <input type="text"
+           name="firstName"
+           id="first-name"
+           ng-model="signUpCtrl.firstName"
+           required />
+    <span ng-if="signUpForm.firstName.$error.required && signUpForm.firstName.$touched">
+      First Name is required
+    </span>
+    <br />
+    <label for="last-name">Last Name</label>
+    <br />
+    <input type="text"
+           name="lastName"
+           id="last-name"
+           ng-model="signUpCtrl.lastName"
+           required />
+    <span ng-if="signUpForm.lastName.$error.required && signUpForm.lastName.$touched">
+      Last Name is required
+    </span>
+    <br />
+    <label for="email-address">Email Address</label>
+    <br />
+    <input type="email"
+           name="emailAddress"
+           id="email-address"
+           ng-model="signUpCtrl.emailAddress"
+           pattern="[\w]+@[\w]+.[\w]+" />
+    <span ng-if="signUpForm.emailAddress.$invalid && signUpForm.emailAddress.$touched">
+      Email Address is not valid
+    </span>
+    <br />
+    <label for="phone-number">Phone Number</label>
+    <br />
+    <input type="phone"
+           name="phoneNumber"
+           id="phone-number"
+           ng-model="signUpCtrl.phoneNumber"
+           pattern="1" />
+    <span ng-if="signUpForm.phoneNumber.$invalid && signUpForm.phoneNumber.$touched">
+      Phone Number is not valid
+    </span>
+    <br />
+    <label for="menu-number">Menu Number</label>
+    <br />
+    <input type="text"
+           name="menuNumber"
+           id="menu-number"
+           ng-model="signUpCtrl.menuNumber"
+           ng-change="signUpCtrl.checkItemExistance()" />
+    <span ng-if="!signUpCtrl.favouriteItemExists && signUpForm.menuNumber.$touched">
+      No such menu number exists.
+    </span>
+    <br />
+    <button ng-click="signUpCtrl.processForm()" ng-disabled="signUpForm.$invalid">Submit</button>
+  </form>
+  <div ng-if="signUpCtrl.formProcessed">Your information has been saved</div>
+</div>

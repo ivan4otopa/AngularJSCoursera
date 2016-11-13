@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="info" ng-if="myInfoCtrl.info.firstName">
+      <div>First Name: {{ myInfoCtrl.info.firstName }}</div>
+      <div>Last Name: {{ myInfoCtrl.info.lastName }}</div>
+      <div>Email Address: {{ myInfoCtrl.info.emailAddress }}</div>
+      <div>Phone Number: {{ myInfoCtrl.info.phoneNumber }}</div>
+      <div>Favourite Item:</div>
+      <div class="menu-item-tile col-md-6">
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="menu-item-photo">
+              <div>{{ myInfoCtrl.info.favouriteItem.short_name }}</div>
+              <img class="img-responsive" width="250" height="150" ng-src="{{ myInfoCtrl.basePath }}/images/{{ myInfoCtrl.info.favouriteItem.short_name }}.jpg" alt="{{ myInfoCtrl.info.favouriteItem.name }}">
+            </div>
+            <div class="menu-item-price">{{ myInfoCtrl.info.favouriteItem.price_small | currency }}<span> {{ myInfoCtrl.info.favouriteItem.small_portion_name }}</span> {{ myInfoCtrl.info.favouriteItem.price_large | currency }} <span>{{ myInfoCtrl.info.favouriteItem.large_portion_name }}</span></div>
+          </div>
+          <div class="menu-item-description col-sm-7">
+            <h3 class="menu-item-title">{{ myInfoCtrl.info.favouriteItem.name }}</h3>
+            <p class="menu-item-details">{{ myInfoCtrl.info.favouriteItem.description }}</p>
+          </div>
+        </div>
+        <hr class="visible-xs">
+      </div>
+  </div>
+  <div ng-if="!myInfoCtrl.info.firstName">Not Signed Up Yet. <a ui-sref="public.signUp">Sign Up Now!</a></div>
+</div>
